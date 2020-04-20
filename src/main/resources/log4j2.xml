@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" monitorInterval="60">
+    <Properties>
+        <Property name="logdir">./logs
+        </Property>
+        <Property name="layout">%d{MM-dd HH:mm:ss} [%t] %-5p %c{1.}:%L - %m%n%throwable</Property>
+    </Properties>
+    <!-- Appender, Layout 설정 -->
+    <Appenders>
+        <RollingFile name="roll-by-time-and-size"
+                     fileName="${logdir}/myLibrary.log"
+                     filePattern="${logdir}/old.myLibrary.%d{yyyy-MM-dd}.%i.log"
+                     ignoreExceptions="false">
+            <PatternLayout pattern="${layout}" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="50 MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="50">
+                <Delete basePath="${logdir}" maxDepth="1">
+                    <IfFileName glob="old.myLibrary.*.*.log" />
+                    <IfLastModified age="7d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${layout}" />
+        </Console>
+    </Appenders>
+
+    <!-- Logger 설정  Real
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="roll-by-time-and-size" />
+        </Root>
+
+        <Logger name="java.sql" level="error" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+        </Logger>
+
+        <Logger name="org.mybatis" level="error" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+        </Logger>
+
+        <Logger name="org.springframework" level="error" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+        </Logger>
+
+        <Logger name="org.apache.ibatis" level="debug" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+        </Logger>
+
+        <Logger name="com.bistel" level="debug" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+        </Logger>
+    </Loggers>
+     -->
+
+    <!-- Logger 설정  Test -->
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="roll-by-time-and-size" />
+            <AppenderRef ref="CONSOLE"/>
+        </Root>
+
+        <!--		<Logger name="java.sql" level="error" additivity="false">-->
+        <!--			<AppenderRef ref="roll-by-time-and-size" />-->
+        <!-- 			<AppenderRef ref="CONSOLE" />-->
+        <!--		</Logger>		-->
+
+        <!-- <Logger name="org.mybatis" level="error" additivity="false">.
+            <AppenderRef ref="roll-by-time-and-size" />
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+
+        <Logger name="org.springframework" level="error" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+
+        <Logger name="org.apache.ibatis" level="debug" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+
+        <Logger name="com.bistel" level="debug" additivity="false">
+            <AppenderRef ref="roll-by-time-and-size" />
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+         -->
+    </Loggers>
+
+
+</Configuration>
