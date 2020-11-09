@@ -1,6 +1,6 @@
 package com.jornathan.booklibrary.dao;
 
-import com.jornathan.booklibrary.model.MyBook;
+import com.jornathan.booklibrary.model.redis.MyBook;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Repository
-public class MyBookRepository {
+public class MyBookRepository  {
 
     public static List<MyBook> myBooks;
 

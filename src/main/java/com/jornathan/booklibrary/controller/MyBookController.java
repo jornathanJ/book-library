@@ -2,8 +2,10 @@ package com.jornathan.booklibrary.controller;
 
 
 import com.jornathan.booklibrary.annotation.TokenRequired;
-import com.jornathan.booklibrary.model.MyBook;
-import com.jornathan.booklibrary.service.MyBookService;
+import com.jornathan.booklibrary.model.hibernate.NvBookInfo;
+import com.jornathan.booklibrary.model.redis.MyBook;
+import com.jornathan.booklibrary.service.OpenAPI.NaverBookService;
+import com.jornathan.booklibrary.service.redis.MyBookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +21,13 @@ public class MyBookController {
 
     private static final Logger logger = LoggerFactory.getLogger(MyBookController.class);
 
+    public static final String TITLE = "d_titl";
+
     @Autowired
     private MyBookService myBookService;
+
+    @Autowired
+    private NaverBookService naverBookService;
 
     @GetMapping("")
     public List<MyBook> getAllBooks(){
@@ -49,5 +56,22 @@ public class MyBookController {
     public Map<String, Object> deleteBook(@PathVariable("tag") String tag){
         return this.myBookService.deleteBook(tag);
     }
+
+    /**
+     * Open API Call
+     */
+    @GetMapping("/openapi/search/{queryType}")
+    public NvBookInfo getOpenAPIByTitle(@PathVariable("queryType") String queryType
+    , @RequestParam("keyword") String keyword){
+        return this.naverBookService.GetBookInfo(queryType, keyword);
+    }
+
+//    /**
+//     * Open API Call
+//     */
+//    @GetMapping("/openapi/title/{keyword}")
+//    public List<MyBook> getOpenAPIByISBN(@PathVariable("keyword") String keyword){
+//        return this.naverBookService.GetBookInfo(TITLE, keyword);
+//    }
 
 }

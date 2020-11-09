@@ -65,6 +65,24 @@
             <AppenderRef ref="CONSOLE"/>
         </Root>
 
+        <!-- Log everything in hibernate -->
+        <Logger name="org.hibernate" level="info" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+
+        <!-- Log all SQL statements
+        <Logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+         -->
+
+        <Logger name="org.hibernate" level="info" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+
+        ### log JDBC bind parameters ###
+        log4j.logger.org.hibernate.type=TRACE
+
         <!--		<Logger name="java.sql" level="error" additivity="false">-->
         <!--			<AppenderRef ref="roll-by-time-and-size" />-->
         <!-- 			<AppenderRef ref="CONSOLE" />-->

@@ -12,7 +12,7 @@ import javax.annotation.PreDestroy;
 import java.io.IOException;
 
 //@Slf4j
-@Profile("local")
+@Profile("test")
 @Configuration
 public class EmbeddedRedisConfig {
 

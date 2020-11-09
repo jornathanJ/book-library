@@ -19,7 +19,7 @@ public class LogAspect {
 
     Logger logger = (Logger) LoggerFactory.getLogger(LogAspect.class);
 
-    //@Around("execution(* com.jornathan.booklibrary.service.MyBookService.*(..))")
+    //@Around("execution(* com.jornathan.booklibrary.service.redis.MyBookService.*(..))")
     @Around("execution(* com.jornathan.booklibrary.controller.MyBookController.*(..))")
     public Object logging(ProceedingJoinPoint pjp) throws Throwable {
         logger.info("start - {} / {}" , pjp.getSignature().getDeclaringTypeName()

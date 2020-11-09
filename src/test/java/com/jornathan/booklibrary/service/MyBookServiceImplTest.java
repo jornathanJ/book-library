@@ -1,9 +1,7 @@
 package com.jornathan.booklibrary.service;
 
-import com.jornathan.booklibrary.dao.MyBookRepository;
-import com.jornathan.booklibrary.domain.Point;
-import com.jornathan.booklibrary.domain.PointRedisRepository;
-import com.jornathan.booklibrary.model.MyBook;
+import com.jornathan.booklibrary.model.redis.MyBook;
+import com.jornathan.booklibrary.service.redis.MyBookService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +14,6 @@ import org.junit.jupiter.api.Test;
 import redis.embedded.RedisServer;
 
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.validation.constraints.AssertTrue;
-import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -37,8 +30,6 @@ public class MyBookServiceImplTest {
     @Value("${spring.redis.port}")
     private int redisPort;
 
-    @Autowired
-    private PointRedisRepository pointRedisRepository;
 
     @BeforeEach
     void setUp() {
@@ -55,26 +46,6 @@ public class MyBookServiceImplTest {
 
     @Test
     public void TestSample() {
-
-        System.setProperty("spring.profiles.default", "local");
-        //given
-        String id = "jojoldu";
-        LocalDateTime refreshTime = LocalDateTime.of(2018, 5, 26, 0, 0);
-//        Point point = Point.builder()
-//                .id(id)
-//                .amount(1000L)
-//                .refreshTime(refreshTime)
-//                .build();
-
-        Point point = new Point(id, 1000L, refreshTime);
-
-        //when
-        pointRedisRepository.save(point);
-
-        //then
-        Point savedPoint = pointRedisRepository.findById(id).get();
-        //Assert.assertTrue(savedPoint.getAmount()).isEqualTo(1000L);
-        //Assert.assertTrue(savedPoint.getRefreshTime()).isEqualTo(refreshTime);
     }
 
     @Test
