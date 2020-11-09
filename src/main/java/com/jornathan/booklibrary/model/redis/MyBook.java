@@ -10,122 +10,122 @@ import java.time.LocalDate;
 @RedisHash("mybook")
 public class MyBook implements Serializable, Cloneable {
 
-    @Id
-    private String tag;
-    private String name;
+  @Id
+  private String tag;
+  private String name;
 
-    private boolean IsLoaned;
-    private boolean IsLoanedExtended;
-    private long loanedUser;
+  private boolean IsLoaned;
+  private boolean IsLoanedExtended;
+  private long loanedUser;
 
-    private LocalDate returnDate;
-    private LocalDate returnDateExtended;
+  private LocalDate returnDate;
+  private LocalDate returnDateExtended;
 
-    private int defaultLoanDay = 14;
-    private int extendLoanDay = 7;
+  private int defaultLoanDay = 14;
+  private int extendLoanDay = 7;
 
-    //private List<MyBookComment> commentList;
+  //private List<MyBookComment> commentList;
 
-    public MyBook(){
-        this.IsLoaned = false;
-    }
+  public MyBook() {
+    this.IsLoaned = false;
+  }
 
-    public MyBook(String tag, String name){
-        this.tag = tag;
-        this.name = name;
-        //this.IsLoaned = false;
-    }
+  public MyBook(String tag, String name) {
+    this.tag = tag;
+    this.name = name;
+    //this.IsLoaned = false;
+  }
 
 
-    @Id
-    @NonNull
-    public String getTag() {
-        return tag;
-    }
+  @Id
+  @NonNull
+  public String getTag() {
+    return tag;
+  }
 
-    public void setTag(String id) {
-        this.tag = id;
-    }
+  public void setTag(String id) {
+    this.tag = id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public boolean getLoaned() {
-        return IsLoaned;
-    }
+  public boolean getLoaned() {
+    return IsLoaned;
+  }
 
-    public void setLoaned(boolean loaned) {
-        IsLoaned = loaned;
-    }
+  public void setLoaned(boolean loaned) {
+    IsLoaned = loaned;
+  }
 
-    public boolean getLoanedExtended() {
-        return IsLoanedExtended;
-    }
+  public boolean getLoanedExtended() {
+    return IsLoanedExtended;
+  }
 
-    public void setLoanedExtended(boolean loanedExtended) {
-        IsLoanedExtended = loanedExtended;
-    }
+  public void setLoanedExtended(boolean loanedExtended) {
+    IsLoanedExtended = loanedExtended;
+  }
 
-    public long getLoanedUser() {
-        return loanedUser;
-    }
+  public long getLoanedUser() {
+    return loanedUser;
+  }
 
-    public void setLoanedUser(long loanedUser) {
-        this.loanedUser = loanedUser;
-    }
+  public void setLoanedUser(long loanedUser) {
+    this.loanedUser = loanedUser;
+  }
 
-    public LocalDate getReturnDate() {
-        return returnDate;
-    }
+  public LocalDate getReturnDate() {
+    return returnDate;
+  }
 
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
-    }
+  public void setReturnDate(LocalDate returnDate) {
+    this.returnDate = returnDate;
+  }
 
-    public LocalDate getReturnDateExtended() {
-        return returnDateExtended;
-    }
+  public LocalDate getReturnDateExtended() {
+    return returnDateExtended;
+  }
 
-    public void setReturnDateExtended(LocalDate returnDateExtended) {
-        this.returnDateExtended = returnDateExtended;
-    }
+  public void setReturnDateExtended(LocalDate returnDateExtended) {
+    this.returnDateExtended = returnDateExtended;
+  }
 
-    public int getDefaultLoanDay() {
-        return defaultLoanDay;
-    }
+  public int getDefaultLoanDay() {
+    return defaultLoanDay;
+  }
 
-    public void setDefaultLoanDay(int defaultLoanDay) {
-        this.defaultLoanDay = defaultLoanDay;
-    }
+  public void setDefaultLoanDay(int defaultLoanDay) {
+    this.defaultLoanDay = defaultLoanDay;
+  }
 
-    public int getExtendLoanDay() {
-        return extendLoanDay;
-    }
+  public int getExtendLoanDay() {
+    return extendLoanDay;
+  }
 
-    public void setExtendLoanDay(int extendLoanDay) {
-        this.extendLoanDay = extendLoanDay;
-    }
+  public void setExtendLoanDay(int extendLoanDay) {
+    this.extendLoanDay = extendLoanDay;
+  }
 
-//    public List<MyBookComment> getCommentList() {
-//        return commentList;
-//    }
-//
-//    public void setCommentList(List<MyBookComment> commentList) {
-//        this.commentList = commentList;
-//    }
+  //    public List<MyBookComment> getCommentList() {
+  //        return commentList;
+  //    }
+  //
+  //    public void setCommentList(List<MyBookComment> commentList) {
+  //        this.commentList = commentList;
+  //    }
 
-    @Override
-    public boolean equals(Object o){
-        return this.tag == ((MyBook)o).getTag();
-    }
+  @Override
+  public boolean equals(Object o) {
+    return this.tag == ((MyBook) o).getTag();
+  }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+  @Override
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
 }
