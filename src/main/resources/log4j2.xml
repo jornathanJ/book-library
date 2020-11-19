@@ -3,7 +3,8 @@
     <Properties>
         <Property name="logdir">./logs
         </Property>
-        <Property name="layout">%d{MM-dd HH:mm:ss} [%t] %-5p %c{1.}:%L - %m%n%throwable</Property>
+<!--        <Property name="layout">%d{MM-dd HH:mm:ss} [%t] %-5p %c{1.}:%L - %m%n%throwable</Property>-->
+        <Property name="layout">%d{MM-dd HH:mm:ss} [%t] %-5p %c:%L - %m%n%throwable</Property>
     </Properties>
     <!-- Appender, Layout 설정 -->
     <Appenders>
@@ -66,9 +67,15 @@
         </Root>
 
         <!-- Log everything in hibernate -->
-        <Logger name="org.hibernate" level="info" additivity="false">
+        <Logger name="org.hibernate.SQL" level="trace" additivity="false">
             <AppenderRef ref="CONSOLE" />
         </Logger>
+
+        <Logger name="org.hibernate.type" level="debug" additivity="false">
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+
+
 
         <!-- Log all SQL statements
         <Logger name="org.hibernate.SQL" level="debug" additivity="false">
@@ -76,12 +83,12 @@
         </Logger>
          -->
 
-        <Logger name="org.hibernate" level="info" additivity="false">
-            <AppenderRef ref="CONSOLE" />
-        </Logger>
+<!--        <Logger name="org.hibernate" level="info" additivity="false">-->
+<!--            <AppenderRef ref="CONSOLE" />-->
+<!--        </Logger>-->
 
-        ### log JDBC bind parameters ###
-        log4j.logger.org.hibernate.type=TRACE
+<!--        ### log JDBC bind parameters ###-->
+<!--        log4j.logger.org.hibernate.type=TRACE-->
 
         <!--		<Logger name="java.sql" level="error" additivity="false">-->
         <!--			<AppenderRef ref="roll-by-time-and-size" />-->

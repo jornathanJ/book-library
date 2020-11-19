@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "title",
@@ -24,178 +29,62 @@ import javax.persistence.Table;
 })
 @Entity //for Hibernate
 @Table(name = "mybook_detail")  //for Hibernate
+// TYPE:001 - @PrimaryKeyJoinColumn(name = "mybooks_id")
+// TYPE:001 - public class MybookDetail extends MyBook {
 public class MybookDetail {
 
   @Id
-  @Column(name = "tag", updatable = false, nullable = false)
-  private String tag;
+//  @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+//  @GenericGenerator(name = "native", strategy = "native")
+  //@Column(name = "id")//, updatable = false, nullable = false)
+  @Column(name="id")
+  private String id;
+
+//  @MapsId
+//  @OneToOne(mappedBy = "mybookDetail")
+//  @JoinColumn(name = "mybookDetail_id")   //same name as id @Column
+//  private MyBook myBook;
 
   @JsonProperty("title")
-  @Column(name = "title", nullable = true)
+  @Column(name = "title")
   private String title;
 
   @JsonProperty("link")
-  @Column(name = "link", nullable = true)
+  @Column(name = "link")
   private String link;
 
   @JsonProperty("image")
-  @Column(name = "image", nullable = true)
+  @Column(name = "image")
   private String image;
 
   @JsonProperty("author")
-  @Column(name = "author", nullable = true)
+  @Column(name = "author")
   private String author;
 
   @JsonProperty("price")
-  @Column(name = "price", nullable = true)
+  @Column(name = "price")
   private String price;
 
   @JsonProperty("discount")
-  @Column(name = "discount", nullable = true)
+  @Column(name = "discount")
   private String discount;
 
   @JsonProperty("publisher")
-  @Column(name = "publisher", nullable = true)
+  @Column(name = "publisher")
   private String publisher;
 
   @JsonProperty("pubdate")
-  @Column(name = "pubdate", nullable = true)
+  @Column(name = "pubdate")
   private String pubdate;
 
   @JsonProperty("isbn")
-  @Column(name = "isbn", nullable = true)
+  @Column(name = "isbn")
   private String isbn = "";
 
   @JsonProperty("description")
-  @Column(name = "description", nullable = true)
+  @Column(name = "description")
   private String description;
 
   public MybookDetail() {
-    this.isbn = "";
   }
-
-
-  //    @JsonIgnore
-  //    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-  @JsonProperty("tag")
-  public String getTag() {
-    return tag;
-  }
-
-  @JsonProperty("tag")
-  public void setTag(String id) {
-    this.tag = id;
-  }
-
-  @JsonProperty("title")
-  public String getTitle() {
-    return title;
-  }
-
-  @JsonProperty("title")
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  @JsonProperty("link")
-  public String getLink() {
-    return link;
-  }
-
-  @JsonProperty("link")
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-  @JsonProperty("image")
-  public String getImage() {
-    return image;
-  }
-
-  @JsonProperty("image")
-  public void setImage(String image) {
-    this.image = image;
-  }
-
-  @JsonProperty("author")
-  public String getAuthor() {
-    return author;
-  }
-
-  @JsonProperty("author")
-  public void setAuthor(String author) {
-    this.author = author;
-  }
-
-  @JsonProperty("price")
-  public String getPrice() {
-    return price;
-  }
-
-  @JsonProperty("price")
-  public void setPrice(String price) {
-    this.price = price;
-  }
-
-  @JsonProperty("discount")
-  public String getDiscount() {
-    return discount;
-  }
-
-  @JsonProperty("discount")
-  public void setDiscount(String discount) {
-    this.discount = discount;
-  }
-
-  @JsonProperty("publisher")
-  public String getPublisher() {
-    return publisher;
-  }
-
-  @JsonProperty("publisher")
-  public void setPublisher(String publisher) {
-    this.publisher = publisher;
-  }
-
-  @JsonProperty("pubdate")
-  public String getPubdate() {
-    return pubdate;
-  }
-
-  @JsonProperty("pubdate")
-  public void setPubdate(String pubdate) {
-    this.pubdate = pubdate;
-  }
-
-  @JsonProperty("isbn")
-  public String getIsbn() {
-    return isbn;
-  }
-
-  @JsonProperty("isbn")
-  public void setIsbn(String isbn) {
-    this.isbn = isbn;
-  }
-
-  @JsonProperty("description")
-  public String getDescription() {
-    return description;
-  }
-
-  @JsonProperty("description")
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  //    @JsonAnyGetter
-  //    public Map<String, Object> getAdditionalProperties() {
-  //        return this.additionalProperties;
-  //    }
-
-  //    @JsonAnySetter
-  //    public void setAdditionalProperty(String name, Object value) {
-  //        this.additionalProperties.put(name, value);
-  //    }
-
 }

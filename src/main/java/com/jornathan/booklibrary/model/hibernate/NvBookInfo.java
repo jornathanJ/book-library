@@ -1,16 +1,17 @@
 package com.jornathan.booklibrary.model.hibernate;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import lombok.Value;
+
+/**
+ * 외부에서 view 전용으로 가져오는 데이터 이므로 일급 객체로 사용하는 것이 좋을 거 같음
+ * "@Value" 를 사용해 봤다.
+ */
+@Value
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "lastBuildDate",
@@ -21,77 +22,13 @@ import java.util.Map;
 })
 public class NvBookInfo {
 
-  @JsonProperty("lastBuildDate")
   private String lastBuildDate;
-  @JsonProperty("total")
+
   private Integer total;
-  @JsonProperty("start")
+
   private Integer start;
-  @JsonProperty("display")
+
   private Integer display;
-  @JsonProperty("items")
+
   private List<Item> items = null;
-  @JsonIgnore
-  private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-  @JsonProperty("lastBuildDate")
-  public String getLastBuildDate() {
-    return lastBuildDate;
-  }
-
-  @JsonProperty("lastBuildDate")
-  public void setLastBuildDate(String lastBuildDate) {
-    this.lastBuildDate = lastBuildDate;
-  }
-
-  @JsonProperty("total")
-  public Integer getTotal() {
-    return total;
-  }
-
-  @JsonProperty("total")
-  public void setTotal(Integer total) {
-    this.total = total;
-  }
-
-  @JsonProperty("start")
-  public Integer getStart() {
-    return start;
-  }
-
-  @JsonProperty("start")
-  public void setStart(Integer start) {
-    this.start = start;
-  }
-
-  @JsonProperty("display")
-  public Integer getDisplay() {
-    return display;
-  }
-
-  @JsonProperty("display")
-  public void setDisplay(Integer display) {
-    this.display = display;
-  }
-
-  @JsonProperty("items")
-  public List<Item> getItems() {
-    return items;
-  }
-
-  @JsonProperty("items")
-  public void setItems(List<Item> items) {
-    this.items = items;
-  }
-
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return this.additionalProperties;
-  }
-
-  @JsonAnySetter
-  public void setAdditionalProperty(String name, Object value) {
-    this.additionalProperties.put(name, value);
-  }
-
 }

@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active: local,remote-db-one
+server:
+  port: 8080
+
+---
+# embedded redis
+spring:
+  profiles: local
+  redis:
+    host: 192.168.6.202
+    port: 6379
+---
+# embedded redis
+spring:
+  profiles: remote-db-one
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.6.203:5432/postgres?
+    username: postgres
+    password: bistel01
+
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+# security
+#spring.security.user.name=john
+#spring.security.user.password=123

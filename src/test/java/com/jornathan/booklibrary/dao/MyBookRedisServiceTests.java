@@ -1,6 +1,6 @@
 package com.jornathan.booklibrary.dao;
 
-import com.jornathan.booklibrary.model.redis.MyBook;
+import com.jornathan.booklibrary.model.redis.MyBookRedis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class MyBookServiceTests {
+public class MyBookRedisServiceTests {
 
   @Autowired
-  private MyBookRepository myBookRepository;
+  private MyBookRepositoryTemp myBookRepository;
 
   @Test
   public void testGetAllBooks() {
-    List<MyBook> list = this.myBookRepository.getAllBooks();
+    List<MyBookRedis> list = this.myBookRepository.getAllBooks();
     assertTrue(list.size() > 0);
   }
 
@@ -30,7 +30,7 @@ public class MyBookServiceTests {
 
   @Test
   public void testSearchBooks() {
-    List<MyBook> list = this.myBookRepository.getAllBooks();
+    List<MyBookRedis> list = this.myBookRepository.getAllBooks();
     assertNotNull(list);
     assertTrue(list.size() > 0);
   }

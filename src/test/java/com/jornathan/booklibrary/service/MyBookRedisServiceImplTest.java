@@ -1,7 +1,7 @@
 package com.jornathan.booklibrary.service;
 
-import com.jornathan.booklibrary.model.redis.MyBook;
-import com.jornathan.booklibrary.service.redis.MyBookService;
+import com.jornathan.booklibrary.model.redis.MyBookRedis;
+import com.jornathan.booklibrary.service.redis.MyBookRedisService;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,10 +17,10 @@ import redis.embedded.RedisServer;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class MyBookServiceImplTest {
+public class MyBookRedisServiceImplTest {
 
   @Autowired
-  private MyBookService myBookService;
+  private MyBookRedisService myBookRedisService;
 
   private RedisServer redisServer;
 
@@ -50,17 +50,17 @@ public class MyBookServiceImplTest {
 
   @Test
   void getAllBooks() {
-    List<MyBook> myBookList = this.myBookService.getAllBooks();
-    assertTrue(myBookList.size() > 0);
+    List<MyBookRedis> myBookRedisList = this.myBookRedisService.getAllBooks();
+    assertTrue(myBookRedisList.size() > 0);
   }
 
   @Test
   void getBook() {
     String bookName = "test";
-    MyBook newBook = new MyBook(bookName, "test book name.");
-    this.myBookService.createBook(newBook);
+    MyBookRedis newBook = new MyBookRedis(bookName, "test book name.");
+    this.myBookRedisService.createBook(newBook);
 
-    MyBook testBook = this.myBookService.getBook(bookName);
+    MyBookRedis testBook = this.myBookRedisService.getBook(bookName);
     assertTrue(testBook != null);
     assertTrue(testBook.getTag().equals(bookName));
 
@@ -70,7 +70,7 @@ public class MyBookServiceImplTest {
   void searchBooks() {
     //MyBookServiceImpl myBookService = new MyBookServiceImpl();
     String tag = "A-001";
-    List<MyBook> rtnValue = myBookService.searchBooks(tag);
+    List<MyBookRedis> rtnValue = myBookRedisService.searchBooks(tag);
   }
 
   @Test

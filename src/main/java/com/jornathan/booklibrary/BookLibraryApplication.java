@@ -12,7 +12,7 @@ public class BookLibraryApplication {
   private static ApplicationContext applicationContext;
 
   public static void main(String[] args) {
-    System.setProperty("spring.profiles.default", "local");
+    //System.setProperty("spring.profiles.default", "local");
     applicationContext = SpringApplication.run(BookLibraryApplication.class, args);
   }
 

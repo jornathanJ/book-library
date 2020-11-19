@@ -1,10 +1,9 @@
-package com.jornathan.booklibrary.service.OpenAPI;
+package com.jornathan.booklibrary.service.naver;
 
 
 // 네이버 검색 API 예제 - blog 검색
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jornathan.booklibrary.controller.MyBookController;
 import com.jornathan.booklibrary.model.hibernate.NvBookInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +18,16 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Naver 에서 제공하는 OpenAPI 를 호출하는 데 사용합니다.
+ */
 @Service
 public class NaverBookService {
 
     private static final Logger logger = LoggerFactory.getLogger(NaverBookService.class);
 
     public static final String clientId = "ckVne5boPXRuKVgan28B"; //애플리케이션 클라이언트 아이디값"
+
     public static final String clientSecret = "fD4f7i8Kq_"; //애플리케이션 클라이언트 시크릿값"
 
     @Autowired

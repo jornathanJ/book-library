@@ -1,7 +1,7 @@
 package com.jornathan.booklibrary;
 
 import com.jornathan.booklibrary.model.redis.BookRedisRepository;
-import com.jornathan.booklibrary.model.redis.MyBook;
+import com.jornathan.booklibrary.model.redis.MyBookRedis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +30,11 @@ public class RedisTest1 {
   @Test
   public void TestBookCreate() {
     String tag = "A-a";
-    MyBook myBook = new MyBook(tag, "Rest API.");
-    myBook.setLoaned(false);
+    MyBookRedis myBookRedis = new MyBookRedis(tag, "Rest API.");
+    myBookRedis.setLoaned(false);
 
-    bookRedisRepository.save(myBook);
-    MyBook savedBook = bookRedisRepository.findById(tag).get();
+    bookRedisRepository.save(myBookRedis);
+    MyBookRedis savedBook = bookRedisRepository.findById(tag).get();
   }
 
 }

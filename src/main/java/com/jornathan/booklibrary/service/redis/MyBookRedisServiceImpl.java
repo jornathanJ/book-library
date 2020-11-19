@@ -1,7 +1,7 @@
 package com.jornathan.booklibrary.service.redis;
 
-import com.jornathan.booklibrary.dao.MyBookRepository;
-import com.jornathan.booklibrary.model.redis.MyBook;
+import com.jornathan.booklibrary.dao.MyBookRepositoryTemp;
+import com.jornathan.booklibrary.model.redis.MyBookRedis;
 
 import java.util.List;
 import java.util.Map;
@@ -10,36 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyBookServiceImpl implements MyBookService {
+public class MyBookRedisServiceImpl implements MyBookRedisService {
 
     @Autowired
-    private MyBookRepository myBookRepository;
+    private MyBookRepositoryTemp myBookRepository;
 
-    public List<MyBook> getAllBooks(){
+    public List<MyBookRedis> getAllBooks(){
         return this.myBookRepository.getAllBooks();
     }
 
-    public MyBook getBook(String bookName){
+    public MyBookRedis getBook(String bookName){
         return this.myBookRepository.getBook(bookName);
     }
 
 
-    public List<MyBook> searchBooks(String keyword){
+    public List<MyBookRedis> searchBooks(String keyword){
         return this.myBookRepository.searchBooks(keyword);
     }
 
-    public void updateBook(List<MyBook> myBookList){
-        this.myBookRepository.updateBook(myBookList);
+    public void updateBook(List<MyBookRedis> myBookRedisList){
+        this.myBookRepository.updateBook(myBookRedisList);
     }
 
-    public void createBook(MyBook newBook){
+    public void createBook(MyBookRedis newBook){
         this.myBookRepository.createBook(newBook);
     }
 
     public Map<String, Object> deleteBook(String tag){
         return this.myBookRepository.deleteBook(tag);
     }
-
-
-
 }

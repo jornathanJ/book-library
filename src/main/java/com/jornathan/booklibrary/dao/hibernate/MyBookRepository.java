@@ -1,6 +1,7 @@
 package com.jornathan.booklibrary.dao.hibernate;
 
-import com.jornathan.booklibrary.model.hibernate.MyBookVO;
+import com.jornathan.booklibrary.model.hibernate.MyBook;
+import com.jornathan.booklibrary.model.hibernate.MyBookProjections;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,7 @@ import java.util.List;
 
 
 @Repository
-public interface MyBookPersistentRepo extends JpaRepository<MyBookVO, String> {
+public interface MyBookRepository extends JpaRepository<MyBook, String> {
 
   //    // 비워있어도 잘 작동함.
   //    // long 이 아니라 Long으로 작성. ex) int => Integer 같이 primitive형식 사용못함
@@ -42,9 +43,9 @@ public interface MyBookPersistentRepo extends JpaRepository<MyBookVO, String> {
 
     <S extends T> List<S> findAll(Example<S> var1, Sort var2);
      */
-  MyBookVO findByTag(String tag);
+  //MyBook findByTag(String tag);
 
-  List<MyBookVO> findAllByOrderByTagAsc();
+  List<MyBookProjections.BookList> findAllByOrderByIdAsc();
 
-  //MyBookVO getOne(String tag);
+  //MyBook getOne(String tag);
 }

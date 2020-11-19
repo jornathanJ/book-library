@@ -7,8 +7,8 @@ import org.springframework.lang.NonNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@RedisHash("mybook")
-public class MyBook implements Serializable, Cloneable {
+@RedisHash("mybookRedis")
+public class MyBookRedis implements Serializable, Cloneable {
 
   @Id
   private String tag;
@@ -26,11 +26,11 @@ public class MyBook implements Serializable, Cloneable {
 
   //private List<MyBookComment> commentList;
 
-  public MyBook() {
+  public MyBookRedis() {
     this.IsLoaned = false;
   }
 
-  public MyBook(String tag, String name) {
+  public MyBookRedis(String tag, String name) {
     this.tag = tag;
     this.name = name;
     //this.IsLoaned = false;
@@ -121,7 +121,7 @@ public class MyBook implements Serializable, Cloneable {
 
   @Override
   public boolean equals(Object o) {
-    return this.tag == ((MyBook) o).getTag();
+    return this.tag == ((MyBookRedis) o).getTag();
   }
 
   @Override

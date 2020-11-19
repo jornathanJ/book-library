@@ -7,7 +7,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class MyBookCommentVO implements Serializable, Cloneable {
+public class MyBookComment implements Serializable, Cloneable {
 
   private String tag;
   private long sequence;
